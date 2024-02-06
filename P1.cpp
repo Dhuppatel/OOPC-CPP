@@ -9,7 +9,7 @@
 using namespace std;
 
 int main()
-{
+{    //declare variables
     char stu_id[10];
     string stu_name;
     int sem;
@@ -23,7 +23,7 @@ int main()
     float SGPA;
     int sum=0,credit=3, total_credit=3+3+3+3+3+3;
 
-
+//input student information
     cout<<"Enter student id:";
     cin.getline(stu_id,10);
     fflush(stdin);
@@ -32,14 +32,14 @@ int main()
     fflush(stdin);
     cout<<"Enter semester:";
     cin>>sem;
-
+//Input subject names
     for(int i=0; i<3; i++)
     {
         cout<<"enter name of subject "<<i+1<<":";
         fflush(stdin);
         getline(cin,sub_name[i]);
     }
-
+// Input theory and practical marks for each subject
     for(int i=0; i<3; i++)
     {
         cout<<"Enter theory marks of "<<sub_name[i]<<" :";
@@ -47,6 +47,7 @@ int main()
         cout<<endl<<"Enter practical marks of "<<sub_name[i]<<" :";
         cin>>pr_mark[i];
     }
+// Calculate grades and grade points for theory and practical for each subject
     for(int i=0; i<3; i++)
     {
 
@@ -105,6 +106,9 @@ int main()
             th_grade[i]="CD";
             th_gradep[i]=5;
         }
+
+        // Calculate practical grades and grade points
+        
         if(pr_mark[i]<55 && pr_mark[i]>=50)
         {
             pr_grade[i]="CD";
@@ -131,13 +135,18 @@ int main()
             pr_gradep[i]=0;
         }
     }
+    
+    // Calculate total SGPA
+
     for(int i=0; i<3; i++)
     {
         sum+=credit*th_gradep[i] + credit*pr_gradep[i];
     }
     SGPA=(float)sum/total_credit;
 
-    system("CLS");
+    system("CLS");//clear screen
+
+// Display student information and grades
     cout<<"Student ID   :"<<stu_id<<endl;
     cout<<"Student Name :"<<stu_name<<endl;
     cout<<"Semester     :"<<sem<<endl;
@@ -147,7 +156,7 @@ int main()
     {
         cout<<left<<setw(29)<<sub_name[i]<<right<<setw(15)<<th_grade[i]<<"          "<<pr_grade[i]<<endl<<endl;
     }
-
+    //display SGPA
     cout<<"SGPA :"<<fixed<<setprecision(2)<<SGPA;
 return 0;
 }
